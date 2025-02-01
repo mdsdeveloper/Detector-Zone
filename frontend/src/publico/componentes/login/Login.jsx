@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";  // Importamos el hook useNavigate
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Footer from "../footerPublico/Footer";
 import HeaderSinNavBar from "../headerSinNavBar/HeaderSinNavBar";
 
 const Login = () => {
-  const [error, setError] = useState(""); // Estado para errores
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,11 +29,10 @@ const Login = () => {
         if (!response.ok) {
           throw new Error(data.message);
         }
-        // Si el login es exitoso
-        localStorage.setItem("username", data[0].username);
-        console.log("Usuario logeado:", data[0].username);
-        console.log(localStorage.getItem("username"));
-        setError(""); // Borra cualquier error previo
+        localStorage.setItem("username", data[0].mail_user);
+        console.log("Usuario logeado:", data[0].mail_user);
+        setError("");
+        navigate("/home");
       })
       .catch((error) => {
         console.error("Error en la petición", error);
@@ -40,35 +40,49 @@ const Login = () => {
       });
   };
 
-  // Función para redirigir al registro
   const redirectToRegistro = () => {
     navigate("/registro");
   };
 
+  // Función para alternar visibilidad de la contraseña
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <>
-      {/* Menu */}
       <HeaderSinNavBar />
 
       <main className="dash-body">
         <div className="contenedor">
-          <form  onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <h2 className="title">Iniciar sesión</h2>
-            {error && <p className="error">{error}</p>} {/* Muestra el error si existe */}
+            {error && <p className="error">{error}</p>}
             <div className="form-group">
               <label htmlFor="email">Correo electrónico</label>
               <input type="email" id="email" name="email" placeholder="Introduce tu correo" required />
             </div>
-            <div className="form-group">
+            <div className="form-group password-container">
               <label htmlFor="password">Contraseña</label>
-              <input type="password" id="password" name="password" placeholder="Introduce tu contraseña" required />
+              <div >
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  placeholder="Introduce tu contraseña"
+                  required
+                />
+                <span className="eye-icon" onClick={togglePasswordVisibility}>
+                  {showPassword ? "👁️" : "🔒"}
+                </span>
+              </div>
             </div>
             <button type="submit" className="log-button">Iniciar sesión</button>
             <div className="options">
-              <button type="button" onClick={() => alert("Funcionalidad de recordar contraseña no implementada")} className="forgot-password">
+              <button type="button" className="forgot-password" onClick={() => alert("Funcionalidad de recordar contraseña no implementada")}>
                 ¿Olvidaste tu contraseña?
               </button>
-              <button type="button" onClick={redirectToRegistro} className="register-button">
+              <button type="button" className="register-button" onClick={redirectToRegistro}>
                 ¿No tienes cuenta? Regístrate
               </button>
             </div>
@@ -76,7 +90,6 @@ const Login = () => {
         </div>
       </main>
 
-      {/* Footer */}
       <Footer />
     </>
   );
