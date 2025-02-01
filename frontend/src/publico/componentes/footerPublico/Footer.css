@@ -1,0 +1,8 @@
+
+.footer-left p {
+    margin: 0;
+}
+.footer-center {
+    display: flex;
+    gap: 20px;
+}

@@ -1,0 +1,74 @@
+ /* Título del formulario */
+ .title {
+     font-size: 1.5rem;
+     font-weight: bold;
+     margin-bottom: 1.5rem;
+     color: #333;
+     text-align: center;
+ }
+
+ .contenedor {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    max-width: 30%;
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 25%;
+    max-height: 60%;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 3rem;
+ }
+
+ .options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+ /* Botón de inicio de sesión */
+ .log-button {
+     display: block;
+     width: 100%;
+     padding: 0.8rem;
+     font-size: 1rem;
+     font-weight: bold;
+     color: #fff;
+     background-color: #007bff;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+ }
+
+ /* Efecto al pasar el mouse sobre el botón */
+ .log-button:hover {
+     background-color: #0056b3;
+ }
+
+ .error {
+     color: red;
+     font-size: 14px;
+     margin-bottom: 10px;
+ }
+
+ /* .form-group {
+     margin-bottom: 1.5rem;
+ } */
+
+ .forgot-password,
+ .register-button {
+     background: none;
+     border: none;
+     color: #007BFF;
+     cursor: pointer;
+     font-size: 0.9rem;
+ }
+
+ .forgot-password:hover,
+ .register-button:hover {
+     text-decoration: underline;
+ }

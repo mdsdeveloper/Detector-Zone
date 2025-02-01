@@ -1,0 +1,94 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+.btn-large {
+    background-color: #007bff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Cuerpo */
+.dashboard-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    flex: 1;
+    margin-top: 15rem; /* Agregado margen superior para bajar el cuerpo */
+}
+
+.btn-join, .btn-info {
+    padding: 1rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-join {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.right-section {
+    width: 40%;
+}
+
+.dashboard-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Footer */
+.dashboard-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-right {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
